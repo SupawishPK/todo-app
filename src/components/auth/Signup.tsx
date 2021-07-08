@@ -10,6 +10,13 @@ const SignUp = ({renderLogin}: SignupProps) => {
     const [password, setPassword] = React.useState("")
     const [confirmPassword, setConfirmPassword] = React.useState("")
 
+    const [disabled, setDisabled] = React.useState(false)
+
+    React.useEffect(()=>{
+        if(password === confirmPassword) setDisabled(false)
+        else setDisabled(true)
+    }, [password, confirmPassword])
+
     return (
         <div style={{height: '300px'}}>
             <h1 className="text-center text-green-400 font-bold" >Signup</h1>
@@ -29,7 +36,7 @@ const SignUp = ({renderLogin}: SignupProps) => {
                 <div>
                     <p>Already a member <span className="text-green-400 cursor-pointer" onClick={()=> renderLogin()}>Login</span></p>
                 </div>
-                <button className="rounded-lg px-6 py-3 font-bold bg-green-400 text-white">Signup</button>
+                <button className={`rounded-lg px-6 py-3 font-bold text-white ${disabled ? "bg-gray-400" : "bg-green-400"} }`} disabled={disabled}>Signup</button>
             </div>
         </div>
     )
