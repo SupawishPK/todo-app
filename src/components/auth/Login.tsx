@@ -10,7 +10,6 @@ const Login = ({ renderSignup }: LoginProps) => {
   const [password, setPassword] = React.useState('')
 
   const onSubmitLogin = () => {
-    //console.log(username, password)
     axios
       .post('/login', {
         username: username,
@@ -19,7 +18,6 @@ const Login = ({ renderSignup }: LoginProps) => {
       .then((res) => {
         // successful, save the token
         if (res.status === 200) {
-          //console.log(res.data)
           const token = res.data.token
           localStorage.setItem('token', token)
 

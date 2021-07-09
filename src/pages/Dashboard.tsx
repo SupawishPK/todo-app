@@ -24,8 +24,8 @@ const Dashboard = () => {
         <h1 className="font-bold text-green-400 text-center text-xl mb-12">
           My Todos Dashboard
         </h1>
-        <TodoForm />
-        <TodoList todos={todoList} />
+        <TodoForm todos={todoList} setTodos={setTodoList}/>
+        <TodoList todos={todoList} setTodos={setTodoList}/>
       </div>
     </>
   )

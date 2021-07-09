@@ -1,7 +1,13 @@
 import React from 'react'
 import axios from 'axios'
+import { Todo } from './TodoList'
 
-const TodoForm = () => {
+interface TodoFormProps {
+  todos: Todo[]
+  setTodos: (todos: Todo[]) => void
+}
+
+const TodoForm = ({ todos, setTodos }: TodoFormProps) => {
   const [title, setTitle] = React.useState<string>('')
   const onSubmit = () => {
     if (title?.length > 0) {
@@ -12,7 +18,9 @@ const TodoForm = () => {
           { headers: { token: localStorage.getItem('token') } }
         )
         .then((res) => {
-          console.log(res)
+          let todo = res.data.todo
+          setTodos([...todos, todo])
+          setTitle('')
         })
     }
   }
@@ -23,6 +31,7 @@ const TodoForm = () => {
         type="text"
         className="w-full px-3 py-2 border border-green-400 rounded-md mr-4"
         onChange={(e) => setTitle(e.target.value)}
+        value={title}
       />
       <button
         className={`py-2 px-5 text-white rounded-md cursor-pointer ${
