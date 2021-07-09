@@ -1,5 +1,5 @@
 import React from 'react'
-
+import axios from 'axios'
 interface SignupProps {
     renderLogin: ()=> void
 }
@@ -16,6 +16,13 @@ const SignUp = ({renderLogin}: SignupProps) => {
         if(password === confirmPassword) setDisabled(false)
         else setDisabled(true)
     }, [password, confirmPassword])
+
+    const onSubmit = () => {
+        axios.post('http://localhost:5000/signup' , {
+            username: username,
+            password: password
+        }).then(res => console.log(res))
+    }
 
     return (
         <div style={{height: '300px'}}>
@@ -36,7 +43,7 @@ const SignUp = ({renderLogin}: SignupProps) => {
                 <div>
                     <p>Already a member <span className="text-green-400 cursor-pointer" onClick={()=> renderLogin()}>Login</span></p>
                 </div>
-                <button className={`rounded-lg px-6 py-3 font-bold text-white ${disabled ? "bg-gray-400" : "bg-green-400"} }`} disabled={disabled}>Signup</button>
+                <button className={`rounded-lg px-6 py-3 font-bold text-white ${disabled ? "bg-gray-400" : "bg-green-400"} }`} disabled={disabled} onClick={()=> onSubmit()}>Signup</button>
             </div>
         </div>
     )

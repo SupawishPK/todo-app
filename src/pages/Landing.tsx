@@ -1,6 +1,6 @@
 import React from 'react'
-import Login from './auth/Login'
-import Signup from './auth/Signup'
+import Login from '../components/auth/Login'
+import Signup from '../components/auth/Signup'
 
 const Landing = () => {
 
