@@ -12,7 +12,7 @@ const Login = ({ renderSignup }: LoginProps) => {
   const onSubmitLogin = () => {
     console.log(username, password)
     axios
-      .post('http://localhost:5000/login', {
+      .post('/login', {
         username: username,
         password: password,
       })

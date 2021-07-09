@@ -18,7 +18,7 @@ const SignUp = ({renderLogin}: SignupProps) => {
     }, [password, confirmPassword])
 
     const onSubmit = () => {
-        axios.post('http://localhost:5000/signup' , {
+        axios.post('/signup' , {
             username: username,
             password: password
         }).then(res => console.log(res))
