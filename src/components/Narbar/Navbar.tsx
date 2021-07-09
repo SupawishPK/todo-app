@@ -1,4 +1,4 @@
-import Logout from "./auth/Logout"
+import Logout from "../auth/Logout"
 
 const Navbar = () => {
     return (
