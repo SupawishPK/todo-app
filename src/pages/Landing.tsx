@@ -12,7 +12,6 @@ const Landing = () => {
                 <div className="absolute inset-0 m-auto" style={{height: '300px'}}>
                     {isSignUp ? <Signup renderLogin={()=> setIsSignUp(false)} /> : <Login renderSignup={()=> setIsSignUp(true)} />}
                 </div>
-                
             </div>
                 
                 {/** username */}
